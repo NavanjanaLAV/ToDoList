@@ -1,0 +1,44 @@
+package com.example.todolist
+
+import android.content.Context
+import android.content.ContentValues
+import android.database.sqlite.SQLiteOpenHelper
+import android.database.sqlite.SQLiteDatabase
+
+
+class NotesDatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+
+
+    companion object {
+        private const val DATABASE_NAME = "notes.db"
+        private const val DATABASE_VERSION = 1
+        private const val TABLE_NAME = "allnotes"
+        private const val COLUMN_ID = "id"
+        private const val COLUMN_TITLE = "title"
+        private const val COLUMN_CONTENT = "content"
+    }
+
+    override fun onCreate(db: SQLiteDatabase?) {
+        val createTable =
+            "CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY , $COLUMN_TITLE TEXT, $COLUMN_CONTENT TEXT)"
+        db?.execSQL(createTable)
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVaesion: Int) {
+        val dropTableQuery = "DROP TABLE IF EXISTS $TABLE_NAME"
+        db?.execSQL(dropTableQuery)
+        onCreate(db)
+    }
+
+    fun insertNote(note: Note) {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_TITLE, note.title)
+            put(COLUMN_CONTENT, note.content)
+        }
+        db.insert(TABLE_NAME, null, values)
+        db.close()
+
+    }
+}
+
