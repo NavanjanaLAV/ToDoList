@@ -7,6 +7,9 @@ import android.widget.TextView
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
+import android.content.Intent
+import android.widget.ImageView as imageView
+
 
 
 class NotesAdapter(private var notes:List<Note>, context:Context) : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>(){
@@ -14,6 +17,7 @@ class NotesAdapter(private var notes:List<Note>, context:Context) : RecyclerView
     class NotesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val titleView: TextView = itemView.findViewById(R.id.title)
         val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
+        val updateButton: imageView = itemView.findViewById(R.id.updateButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
@@ -29,6 +33,14 @@ class NotesAdapter(private var notes:List<Note>, context:Context) : RecyclerView
         val note = notes[position]
         holder.titleView.text = note.title
         holder.contentTextView.text = note.content
+
+
+        holder.updateButton.setOnClickListener {
+            val intent = Intent(holder.itemView.context, UpdateNoteActivity::class.java).apply {
+                putExtra("note_id", note.id)
+            }
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     fun refreshData(newNotes: List<Note>){
