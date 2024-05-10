@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/addNoteHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -25,15 +25,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/saveButton"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/title"
+        android:layout_alignTop="@+id/addNoteHeading"
         android:src="@drawable/baseline_done_24"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginEnd="6dp"/>
 
     <EditText
         android:id="@+id/titleEditText"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/title"
+        android:layout_below="@+id/addNoteHeading"
         android:layout_marginTop="16dp"
         android:background="@drawable/purple_border"
         android:fontFamily="@font/poppins"
@@ -44,7 +44,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/discriptionEditText"
+        android:id="@+id/contentEditText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/titleEditText"
@@ -54,7 +54,8 @@
         android:fontFamily="@font/poppins"
         android:padding="12dp"
         android:textColor="@color/purple"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:hint="Enter the discription"/>
 
 
 </RelativeLayout>

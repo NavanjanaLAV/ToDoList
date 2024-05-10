@@ -31,7 +31,7 @@ class NotesAdapter(private var notes:List<Note>, context:Context) : RecyclerView
         holder.contentTextView.text = note.content
     }
 
-    fun freshData(newNotes: List<Note>){
+    fun refreshData(newNotes: List<Note>){
         notes = newNotes
         notifyDataSetChanged()
     }

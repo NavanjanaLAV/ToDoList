@@ -28,7 +28,7 @@ class AddListActivity : AppCompatActivity() {
 
         binding.saveButton.setOnClickListener{
             val title = binding.titleEditText.text.toString()
-            val content = binding.discriptionEditText.text.toString()
+            val content = binding.contentEditText.text.toString()
             val note = Note(0, title, content)
             db.insertNote(note)
             finish()

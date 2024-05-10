@@ -7,18 +7,29 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.todolist.databinding.ActivityMainBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+
+
 
 class MainActivity : AppCompatActivity() {
 
 
 
     private lateinit var binding :ActivityMainBinding
+    private lateinit var db: NotesDatabaseHelper
+    private lateinit var notesAdapter: NotesAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        db = NotesDatabaseHelper(this)
+        notesAdapter = NotesAdapter(db.getAllNotes(), this)
+
+        binding.notesRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.notesRecyclerView.adapter = notesAdapter
 
 
         binding.addButton.setOnClickListener{
@@ -28,5 +39,9 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+    override fun onResume() {
+        super.onResume()
+        notesAdapter.refreshData(db.getAllNotes())
     }
 }
