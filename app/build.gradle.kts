@@ -37,6 +37,12 @@ android {
         viewBinding = true
 
     }
+    allprojects {
+        repositories {
+            google()
+            mavenCentral()
+        }
+    }
 
 }
 
@@ -50,4 +56,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }

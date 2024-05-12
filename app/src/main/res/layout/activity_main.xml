@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/light_pink"
     tools:context=".MainActivity">
 
 
@@ -13,8 +14,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/notesHeading"
         android:layout_alignParentTop="true"
-        android:text="Notes. "
+        android:text="Plan your wonderful day with me"
         android:textSize="24sp"
+        android:textStyle="bold"
         android:layout_marginStart="18dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/purple" />
@@ -24,6 +26,7 @@
         android:id="@+id/notesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:backgroundTint="@color/light_pink"
         android:layout_marginTop="50dp"
         android:padding="16dp"/>
 
